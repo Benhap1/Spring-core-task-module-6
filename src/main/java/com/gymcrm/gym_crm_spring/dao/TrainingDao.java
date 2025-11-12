@@ -8,6 +8,9 @@ import java.util.List;
 
 @Repository
 public class TrainingDao extends AbstractDaoJpa<Training> {
+    public TrainingDao() {
+        super(Training.class);
+    }
 
     public List<Training> findByCriteriaForTrainee(String traineeUsername,
                                                    LocalDate from,

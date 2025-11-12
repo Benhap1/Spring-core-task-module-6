@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.AccessLevel;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,11 +20,8 @@ public abstract class AbstractDaoJpa<T> {
 
     private final Class<T> clazz;
 
-    @SuppressWarnings("unchecked")
-    protected AbstractDaoJpa() {
-        this.clazz = (Class<T>) ((ParameterizedType) getClass()
-                .getGenericSuperclass())
-                .getActualTypeArguments()[0];
+    protected AbstractDaoJpa(Class<T> clazz) {
+        this.clazz = clazz;
     }
 
     public T save(T entity) {

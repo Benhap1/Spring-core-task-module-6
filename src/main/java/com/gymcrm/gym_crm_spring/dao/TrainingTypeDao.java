@@ -5,8 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+
 @Repository
 public class TrainingTypeDao extends AbstractDaoJpa<TrainingType> {
+    public TrainingTypeDao() {
+        super(TrainingType.class);
+    }
 
     public Optional<TrainingType> findByName(String name) {
         return getEntityManager()

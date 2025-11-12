@@ -5,8 +5,12 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
+
 @Repository
 public class TraineeDao extends AbstractDaoJpa<Trainee> {
+    public TraineeDao() {
+        super(Trainee.class);
+    }
 
     public Optional<Trainee> findByUsername(String username) {
         TypedQuery<Trainee> q = getEntityManager().createQuery("""
